@@ -1,5 +1,20 @@
+:title: Text Parser Ruby Gem
 =Arguments
 * :dictionary => nil,
 * :order => :word,
 * :order_direction => :asc,
 * :negative_dictionary => []
+
+=Usage
+  "Simple, simple test".parse # => [{:word => "simple", :hits => 2}, {:word => "test", :hits => 1}]
+  
+  my_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
+  my_text.parse(:dictionary => ["dolor", "consectetur"])
+  # => [{:word => "consectetur", :hits => 2}, {:word => "dolor", :hits => 1}]
+  
+  my_text.parse(:dictionary => ["dolor", "consectetur"], :order => :word, :order_direction => :desc)
+  # => [{:word => "dolor", :hits => 1}, {:word => "consectetur", :hits => 2}]
+  
+  
+  
+  
