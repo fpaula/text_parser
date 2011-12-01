@@ -16,6 +16,12 @@
   my_text.parse(:dictionary => ["dolor", "consectetur"], :order => :word, :order_direction => :desc)
   # => [{:word => "dolor", :hits => 1}, {:word => "consectetur", :hits => 2}]
   
+
+cat::  a small furry mammal
+           that seems to sleep a lot
+
+ant::  a little insect that is known
+           to enjoy picnics
   
   
   
