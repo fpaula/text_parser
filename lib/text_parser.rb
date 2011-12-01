@@ -8,7 +8,7 @@ module TextParser
     match_result.each do |w|
       result << {:hits => match_result.count(w), :word => w} unless result.select{|r| r[:word] == w}.shift
     end 
-    result
+    result.sort_by{|i| i[:word]}
   end
   
   private
