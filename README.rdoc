@@ -8,21 +8,12 @@
 
   "Simple, simple test".parse 
   # => [{:word => "simple", :hits => 2}, {:word => "test", :hits => 1}]
---  
+  
   my_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
   my_text.parse(:dictionary => ["dolor", "consectetur"])
   # => [{:word => "consectetur", :hits => 2}, {:word => "dolor", :hits => 1}]
---  
+  
   my_text.parse(:dictionary => ["dolor", "consectetur"], :order => :word, :order_direction => :desc)
   # => [{:word => "dolor", :hits => 1}, {:word => "consectetur", :hits => 2}]
-  
-
-cat::  a small furry mammal
-           that seems to sleep a lot
-
-ant::  a little insect that is known
-           to enjoy picnics
-             test
-  
   
   
