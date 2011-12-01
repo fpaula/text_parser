@@ -58,4 +58,9 @@ class TextParserTest < Test::Unit::TestCase
                                                                           {:word => "alpha",  :hits => 2},
                                                                           {:word => "beta",   :hits => 1}]
   end
+  
+  def test_should_ignore_negative_dictionary
+    text = "This is good"
+    assert_equal text.parse(:negative_dictionary => ["is", "this"]), [{:word => "good",  :hits => 1}]
+  end
 end

@@ -2,4 +2,4 @@
 * :dictionary => nil,
 * :order => :word,
 * :order_direction => :asc,
-* :negative_dictionary => nil
+* :negative_dictionary => []
