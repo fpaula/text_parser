@@ -25,3 +25,7 @@ module TextParser
     self.gsub(/[^\w\s\-]/, "")
   end
 end
+
+class String
+  include TextParser
+end
