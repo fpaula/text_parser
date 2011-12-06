@@ -2,8 +2,7 @@ module TextParser
   # Returns a parsed text with the words and its occurrences.
   # @param [Hash] [args]
   # [args] [Symbol] :dictionary, :order, :order_direction, :negative_dictionary
-  # @return [Array of Hash]
-  
+  # @return [Array of Hash]  
   def parse(args = {})
     options = {
       :dictionary => nil,
@@ -14,6 +13,7 @@ module TextParser
     result = []
     text = process_text
     options[:dictionary] = text.split(" ") unless options[:dictionary]
+    return [] if options[:dictionary].count < 1
     regex = Regexp.new(options[:dictionary].join("|"), Regexp::IGNORECASE)
     match_result = text.scan(regex).map{|i| i.downcase}
     match_result.each do |w|

@@ -59,7 +59,18 @@ class TextParserTest < Test::Unit::TestCase
   end
   
   def test_should_ignore_negative_dictionary
-    text = "This is good"
-    assert_equal text.parse(:negative_dictionary => ["is", "this"]), [{:word => "good",  :hits => 1}]
+    assert_equal "This is good".parse(:negative_dictionary => ["is", "this"]), [{:word => "good",  :hits => 1}]
+  end
+
+  def test_should_works_with_special_characters
+    assert_equal "'/[.](\")".parse, []
+  end
+  
+  def test_should_works_hifen
+    assert_equal "self-service".parse, [{:word => "self-service", :hits => 1}]
+  end
+  
+  def test_should_return_double_words
+    assert_equal "I like the movie Forrest Gump.".parse(:dictionary => ["Forrest Gump"]), [{:word => "forrest gump", :hits => 1}]
   end
 end
