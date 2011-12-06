@@ -1,12 +1,12 @@
 =Arguments (Hash)
-+---------------------------------+--------+---------------+
-| Key                             | Type   | Default value |
-+---------------------------------+--------+---------------+
-| :dictionary                     | Array  | nil           |
-| :order (:word | :hits)          | Symbol | :word         |
-| :order_direction (:asc | :desc) | Symbol | :asc          |
-| :negative_dictionary            | Array  | []            |
-+---------------------------------+--------+---------------+
+  +---------------------------------+--------+---------------+
+  | Key                             | Type   | Default value |
+  +---------------------------------+--------+---------------+
+  | :dictionary                     | Array  | nil           |
+  | :order (:word | :hits)          | Symbol | :word         |
+  | :order_direction (:asc | :desc) | Symbol | :asc          |
+  | :negative_dictionary            | Array  | []            |
+  +---------------------------------+--------+---------------+
 
 
 =Usage
