@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: TextParser
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (T)</a> &raquo; 
+    
+    
+    <span class="title">TextParser</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: TextParser
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="String.html" title="String (class)">String</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/text_parser.rb<span class="defines">,<br />
+  lib/text_parser/version.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="TextParser/Version.html" title="TextParser::Version (module)">Version</a></span>
+    
+   
+    
+  
+</p>
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">- (Array of Hash) <strong>parse</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a parsed text with the words and its occurrences.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="parse-instance_method">
+  
+    - (<tt>Array of Hash</tt>) <strong>parse</strong>(args = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a parsed text with the words and its occurrences.</p>
+<dl class="rdoc-list label-list"><dt>args
+<dd><dl class="rdoc-list label-list"><dt>Symbol
+<dd>
+<p>:dictionary, :order, :order_direction, :negative_dictionary</p>
+</dd></dl>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>[args]</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array of Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/text_parser.rb', line 7</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_parse identifier id'>parse</span><span class='lparen token'>(</span><span class='rubyid_args identifier id'>args</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='rubyid_options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+    <span class='symbol val'>:dictionary</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span>
+    <span class='symbol val'>:order</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:word</span><span class='comma token'>,</span>
+    <span class='symbol val'>:order_direction</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:asc</span><span class='comma token'>,</span>
+    <span class='symbol val'>:negative_dictionary</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='rubyid_merge identifier id'>merge</span><span class='lparen token'>(</span><span class='rubyid_args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='rubyid_result identifier id'>result</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rubyid_text identifier id'>text</span> <span class='assign token'>=</span> <span class='rubyid_process_text identifier id'>process_text</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:dictionary</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_text identifier id'>text</span><span class='dot token'>.</span><span class='rubyid_split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:dictionary</span><span class='rbrack token'>]</span>
+  <span class='rubyid_regex identifier id'>regex</span> <span class='assign token'>=</span> <span class='rubyid_Regexp constant id'>Regexp</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:dictionary</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;|&quot;</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='rubyid_Regexp constant id'>Regexp</span><span class='colon2 op'>::</span><span class='rubyid_IGNORECASE constant id'>IGNORECASE</span><span class='rparen token'>)</span>
+  <span class='rubyid_match_result identifier id'>match_result</span> <span class='assign token'>=</span> <span class='rubyid_text identifier id'>text</span><span class='dot token'>.</span><span class='rubyid_scan identifier id'>scan</span><span class='lparen token'>(</span><span class='rubyid_regex identifier id'>regex</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_i identifier id'>i</span><span class='bitor op'>|</span> <span class='rubyid_i identifier id'>i</span><span class='dot token'>.</span><span class='rubyid_downcase identifier id'>downcase</span><span class='rbrace token'>}</span>
+  <span class='rubyid_match_result identifier id'>match_result</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_w identifier id'>w</span><span class='bitor op'>|</span>
+    <span class='rubyid_result identifier id'>result</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:hits</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_match_result identifier id'>match_result</span><span class='dot token'>.</span><span class='rubyid_count identifier id'>count</span><span class='lparen token'>(</span><span class='rubyid_w identifier id'>w</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='symbol val'>:word</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_w identifier id'>w</span><span class='rbrace token'>}</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_result identifier id'>result</span><span class='dot token'>.</span><span class='rubyid_select identifier id'>select</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_r identifier id'>r</span><span class='bitor op'>|</span> <span class='rubyid_r identifier id'>r</span><span class='lbrack token'>[</span><span class='symbol val'>:word</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='rubyid_w identifier id'>w</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='rubyid_shift identifier id'>shift</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:negative_dictionary</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_i identifier id'>i</span><span class='bitor op'>|</span> <span class='rubyid_i identifier id'>i</span><span class='dot token'>.</span><span class='rubyid_downcase identifier id'>downcase</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_w identifier id'>w</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span> 
+  <span class='rubyid_result identifier id'>result</span> <span class='assign token'>=</span> <span class='rubyid_result identifier id'>result</span><span class='dot token'>.</span><span class='rubyid_sort_by identifier id'>sort_by</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_i identifier id'>i</span><span class='bitor op'>|</span> <span class='rubyid_i identifier id'>i</span><span class='lbrack token'>[</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:order</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+  <span class='rubyid_result identifier id'>result</span><span class='dot token'>.</span><span class='rubyid_reverse! fid id'>reverse!</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:order_direction</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='symbol val'>:desc</span>
+  <span class='rubyid_result identifier id'>result</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Dec  6 10:19:06 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

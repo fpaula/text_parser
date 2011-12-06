@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Arguments">Arguments</h1>
+<ul><li>
+<p>:dictionary =&gt; nil,</p>
+</li><li>
+<p>:order =&gt; :word (default) | :hits,</p>
+</li><li>
+<p>:order_direction =&gt; :asc (default) | :desc,</p>
+</li><li>
+<p>:negative_dictionary =&gt; []</p>
+</li></ul>
+
+<h1 id="label-Usage">Usage</h1>
+
+<pre class="ruby"><span class="ruby-string">&quot;Simple, simple test&quot;</span>.<span class="ruby-identifier">parse</span> 
+<span class="ruby-comment"># =&gt; [{:word =&gt; &quot;simple&quot;, :hits =&gt; 2}, {:word =&gt; &quot;test&quot;, :hits =&gt; 1}]</span>
+</pre>
+<hr style="height: 10px">
+
+<pre class="ruby"><span class="ruby-identifier">my_text</span> = <span class="ruby-string">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur.&quot;</span>
+<span class="ruby-identifier">my_text</span>.<span class="ruby-identifier">parse</span>(:<span class="ruby-identifier">dictionary</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;dolor&quot;</span>, <span class="ruby-string">&quot;consectetur&quot;</span>])
+<span class="ruby-comment"># =&gt; [{:word =&gt; &quot;consectetur&quot;, :hits =&gt; 2}, {:word =&gt; &quot;dolor&quot;, :hits =&gt; 1}]</span>
+</pre>
+<hr style="height: 10px">
+
+<pre class="ruby"><span class="ruby-identifier">my_text</span>.<span class="ruby-identifier">parse</span>(:<span class="ruby-identifier">dictionary</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;dolor&quot;</span>, <span class="ruby-string">&quot;consectetur&quot;</span>], :<span class="ruby-identifier">order</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">word</span>, :<span class="ruby-identifier">order_direction</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">desc</span>)
+<span class="ruby-comment"># =&gt; [{:word =&gt; &quot;dolor&quot;, :hits =&gt; 1}, {:word =&gt; &quot;consectetur&quot;, :hits =&gt; 2}]</span>
+</pre>
+<hr style="height: 10px">
+
+<pre class="ruby"><span class="ruby-string">&quot;Lorem ipsum dolor sit amet&quot;</span>.<span class="ruby-identifier">parse</span>(:<span class="ruby-identifier">negative_dictionary</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;ipsum&quot;</span>, <span class="ruby-string">&quot;dolor&quot;</span>, <span class="ruby-string">&quot;sit&quot;</span>])
+<span class="ruby-comment"># =&gt; [{:word =&gt; &quot;loren&quot;, :hits =&gt; 1}, {:word =&gt; &quot;amet&quot;, :hits =&gt; 1}]</span>
+</pre>
+</div></div>
+    
+    <div id="footer">
+  Generated on Tue Dec  6 10:19:05 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

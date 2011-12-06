@@ -1,4 +1,9 @@
 module TextParser
+  # Returns a parsed text with the words and its occurrences.
+  # @param [Hash] [args]
+  # [args] [Symbol] :dictionary, :order, :order_direction, :negative_dictionary
+  # @return [Array of Hash]
+  
   def parse(args = {})
     options = {
       :dictionary => nil,
@@ -26,6 +31,7 @@ module TextParser
   end
 end
 
+# Includes module TextParser in the String object
 class String
   include TextParser
 end

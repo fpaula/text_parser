@@ -1,11 +1,10 @@
 require "test/unit"
-require "string"
 require "text_parser"
 
 class TextParserTest < Test::Unit::TestCase
 
   def test_should_have_method_parse
-    assert "some text".methods.select{|a| a=~/parse/}.count > 0
+    assert "some text".methods.select{|a| a == "parse"}.count > 0
   end
   
   def test_should_parse
