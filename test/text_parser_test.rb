@@ -73,4 +73,10 @@ class TextParserTest < Test::Unit::TestCase
   def test_should_return_double_words
     assert_equal "I like the movie Forrest Gump.".parse(:dictionary => ["Forrest Gump"]), [{:word => "forrest gump", :hits => 1}]
   end
+
+  def test_should_manage_null_args
+    args = {:dictionary=>nil, :negative_dictionary=>nil, :order=>nil, :order_direction=>nil}
+    assert_equal "text".parse(args), [{:word => "text", :hits => 1}]
+  end
+
 end

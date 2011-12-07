@@ -4,8 +4,8 @@ module TextParser
   # [args] [Symbol] :dictionary, :order, :order_direction, :negative_dictionary
   # @return [Array of Hash]  
   def parse(args = {})
+    args.delete_if {|key, value| value.nil? }
     options = {
-      :dictionary => nil,
       :order => :word,
       :order_direction => :asc,
       :negative_dictionary => []
