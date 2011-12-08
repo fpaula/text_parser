@@ -2,7 +2,6 @@ require "test/unit"
 require "text_parser"
 
 class TextParserTest < Test::Unit::TestCase
-
   def test_should_have_method_parse
     assert "some text".methods.select{|a| a == "parse"}.count > 0
   end
@@ -79,4 +78,28 @@ class TextParserTest < Test::Unit::TestCase
     assert_equal "text".parse(args), [{:word => "text", :hits => 1}]
   end
 
+  def test_should_work_with_many_spaces
+    text = "e se    eu     encher      de    espacos"
+    assert_equal [{:word => "de",  :hits => 1},
+                              {:word => "e", :hits => 1},
+                              {:word => "encher", :hits => 1},
+                              {:word => "espacos", :hits => 1},
+                              {:word => "eu", :hits => 1},
+                              {:word => "se", :hits => 1}], text.parse
+  end   
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

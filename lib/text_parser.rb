@@ -1,3 +1,4 @@
+require 'iconv'  
 module TextParser
   # Returns a parsed text with the words and its occurrences.
   # @param [Hash] [args]
@@ -14,10 +15,10 @@ module TextParser
     text = process_text
     options[:dictionary] = text.split(" ") unless options[:dictionary]
     return [] if options[:dictionary].count < 1
-    regex = Regexp.new(options[:dictionary].join("|"), Regexp::IGNORECASE)
-    match_result = text.scan(regex).map{|i| i.downcase}
+    regex = Regexp.new("(\\b#{options[:dictionary].join('\\b|\\b')}\\b)", Regexp::IGNORECASE)
+    match_result = text.scan(regex).map{|i| i.shift.downcase}   
     match_result.each do |w|
-      result << {:hits => match_result.count(w), :word => w} unless result.select{|r| r[:word] == w}.shift unless options[:negative_dictionary].map{|i| i.downcase}.include?(w)
+      result << {:hits => match_result.count(w), :word => w} unless result.select{|r| r[:word] == w}.shift || options[:negative_dictionary].map{|i| i.downcase}.include?(w)
     end 
     result = result.sort_by{|i| i[options[:order]]}
     result.reverse! if options[:order_direction] == :desc
@@ -27,7 +28,8 @@ module TextParser
   private
   
   def process_text
-    self.gsub(/[^\w\s\-]/, "")
+    text = self.gsub(/\s{2,}/," ")
+    text = text.gsub(/[^\w\s\-]/, "")
   end
 end
 
