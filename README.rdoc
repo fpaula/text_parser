@@ -5,7 +5,7 @@
   | :dictionary                     | Array  | nil           |
   | :order (:word | :hits)          | Symbol | :word         |
   | :order_direction (:asc | :desc) | Symbol | :asc          |
-  | :negative_dictionary            | Array  | []            |
+  | :negative_dictionary            | Array  | nil           |
   +---------------------------------+--------+---------------+
 
 
