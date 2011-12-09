@@ -9,7 +9,8 @@ class TextParserTest < Test::Unit::TestCase
   def test_should_parse
     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
     assert_equal [{:word => "consectetur",  :hits => 2},
-                  {:word => "dolor",        :hits => 1}], text.parse(:dictionary => ["dolor", "consectetur"])
+                  {:word => "dolor",        :hits => 1}],
+                  text.parse(:dictionary => ["dolor", "consectetur"])
   end
   
   def test_should_parse_without_dictionary
@@ -46,15 +47,16 @@ class TextParserTest < Test::Unit::TestCase
     result = [{:word => "beta",  :hits => 1},
               {:word => "alpha", :hits => 2},
               {:word => "gamma", :hits => 3}]
-    assert_equal text.parse(:order => :hits), result
-    assert_equal text.parse(:order => :hits, :order_direction => :asc), result
+    assert_equal result, text.parse(:order => :hits)
+    assert_equal result, text.parse(:order => :hits, :order_direction => :asc)
   end
   
   def test_should_order_by_hits_desc
     text = "gamma alpha gamma beta alpha gamma"
     assert_equal [{:word => "gamma",  :hits => 3},
                   {:word => "alpha",  :hits => 2},
-                  {:word => "beta",   :hits => 1}], text.parse(:order => :hits, :order_direction => :desc)
+                  {:word => "beta",   :hits => 1}],
+                  text.parse(:order => :hits, :order_direction => :desc)
   end
   
   def test_should_ignore_negative_dictionary
@@ -70,12 +72,13 @@ class TextParserTest < Test::Unit::TestCase
   end
   
   def test_should_return_double_words
-    assert_equal "I like the movie Forrest Gump.".parse(:dictionary => ["Forrest Gump"]), [{:word => "forrest gump", :hits => 1}]
+    assert_equal [{:word => "forrest gump", :hits => 1}],
+                 "I like the movie Forrest Gump.".parse(:dictionary => ["Forrest Gump"])
   end
 
   def test_should_manage_null_args
     args = {:dictionary=>nil, :negative_dictionary=>nil, :order=>nil, :order_direction=>nil}
-    assert_equal "text".parse(args), [{:word => "text", :hits => 1}]
+    assert_equal [{:word => "text", :hits => 1}], "text".parse(args)
   end
 
   def test_should_work_with_many_spaces
