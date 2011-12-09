@@ -8,22 +8,21 @@ class TextParserTest < Test::Unit::TestCase
   
   def test_should_parse
     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
-    assert_equal text.parse(:dictionary => ["dolor", "consectetur"]), [{:word => "consectetur", :hits => 2}, {:word => "dolor", :hits => 1}]
+    assert_equal [{:word => "consectetur",  :hits => 2},
+                  {:word => "dolor",        :hits => 1}], text.parse(:dictionary => ["dolor", "consectetur"])
   end
   
   def test_should_parse_without_dictionary
-    text = "test test"
-    assert_equal text.parse, [{:word => "test", :hits => 2}]
+    assert_equal [{:word => "test", :hits => 2}], "test test".parse
   end
   
   def test_should_remove_some_characters
     text = "Test? Test. Yes, test!"
-    assert_equal text.parse, [{:word => "test", :hits => 3}, {:word => "yes", :hits => 1}]
+    assert_equal [{:word => "test", :hits => 3}, {:word => "yes", :hits => 1}], text.parse
   end
   
   def test_should_return_an_empty_array
-    text = "test"
-    assert_equal text.parse(:dictionary => ['abc']), []
+    assert_equal "test".parse(:dictionary => ['abc']), []
   end
 
   def test_should_order_by_word_asc
@@ -32,13 +31,14 @@ class TextParserTest < Test::Unit::TestCase
               {:word => "beta",   :hits => 1},
               {:word => "gamma",  :hits => 2},
               {:word => "omega",  :hits => 1}]
-    assert_equal text.parse, result
-    assert_equal text.parse(:order => :word), result
-    assert_equal text.parse(:order => :word, :order_direction => :asc), result
+    assert_equal result, text.parse
+    assert_equal result, text.parse(:order => :word)
+    assert_equal result, text.parse(:order => :word, :order_direction => :asc)
   end
   
   def test_should_order_by_word_desc
-    assert_equal "aaa zzz".parse(:order => :word, :order_direction => :desc), [{:word => "zzz",  :hits => 1}, {:word => "aaa",  :hits => 1}]
+    assert_equal [{:word => "zzz",  :hits => 1},
+                  {:word => "aaa",  :hits => 1}], "aaa zzz".parse(:order => :word, :order_direction => :desc)
   end
  
   def test_should_order_by_hits_asc
@@ -52,21 +52,21 @@ class TextParserTest < Test::Unit::TestCase
   
   def test_should_order_by_hits_desc
     text = "gamma alpha gamma beta alpha gamma"
-    assert_equal text.parse(:order => :hits, :order_direction => :desc), [{:word => "gamma",  :hits => 3},
-                                                                          {:word => "alpha",  :hits => 2},
-                                                                          {:word => "beta",   :hits => 1}]
+    assert_equal [{:word => "gamma",  :hits => 3},
+                  {:word => "alpha",  :hits => 2},
+                  {:word => "beta",   :hits => 1}], text.parse(:order => :hits, :order_direction => :desc)
   end
   
   def test_should_ignore_negative_dictionary
-    assert_equal "This is good".parse(:negative_dictionary => ["is", "this"]), [{:word => "good",  :hits => 1}]
+    assert_equal [{:word => "good",  :hits => 1}], "This is good".parse(:negative_dictionary => ["is", "this"])
   end
 
   def test_should_works_with_special_characters
-    assert_equal "'/[.](\")".parse, []
+    assert_equal [], "'/[.](\")".parse
   end
   
   def test_should_works_hifen
-    assert_equal "self-service".parse, [{:word => "self-service", :hits => 1}]
+    assert_equal [{:word => "self-service", :hits => 1}], "self-service".parse
   end
   
   def test_should_return_double_words
@@ -80,13 +80,22 @@ class TextParserTest < Test::Unit::TestCase
 
   def test_should_work_with_many_spaces
     text = "e se    eu     encher      de    espacos"
-    assert_equal [{:word => "de",  :hits => 1},
-                              {:word => "e", :hits => 1},
-                              {:word => "encher", :hits => 1},
-                              {:word => "espacos", :hits => 1},
-                              {:word => "eu", :hits => 1},
-                              {:word => "se", :hits => 1}], text.parse
+    assert_equal [{:word => "de",     :hits => 1},
+                  {:word => "e",      :hits => 1},
+                  {:word => "encher", :hits => 1},
+                  {:word => "espacos",:hits => 1},
+                  {:word => "eu",     :hits => 1},
+                  {:word => "se",     :hits => 1}], text.parse
   end   
+  
+  def test_should_keep_some_special_character
+    assert_equal [{:word => "espaço", :hits => 1},
+                  {:word => "sideral",:hits => 1}], "Espaço sideral".parse
+    assert_equal [{:word => "açúcar", :hits => 1},
+                  {:word => "bom",    :hits => 1},
+                  {:word => "de",     :hits => 1},
+                  {:word => "pão",    :hits => 1}], "Pão de açúcar é bom.".parse
+  end
 end
 
 

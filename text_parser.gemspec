@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "text_parser"
-  s.version     = "0.1.3"
+  s.version     = "0.1.4"
   s.author      = "Frederico de Paula"
   s.email       = "fpaula@gmail.com"
   s.summary     = "A easy way to parse text."

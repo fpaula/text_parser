@@ -29,7 +29,7 @@ module TextParser
   
   def process_text
     text = self.gsub(/\s{2,}/," ")
-    text = text.gsub(/[^\w\s\-]/, "")
+    text = text.gsub(/[^\w\s\-]/u, "")
   end
 end
 
