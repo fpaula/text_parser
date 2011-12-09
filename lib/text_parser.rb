@@ -1,4 +1,3 @@
-require 'iconv'  
 module TextParser
   # Returns a parsed text with the words and its occurrences.
   # @param [Hash] [args]
