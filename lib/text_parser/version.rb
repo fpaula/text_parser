@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module TextParser
   module Version
     MAJOR = 0

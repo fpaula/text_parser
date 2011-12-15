@@ -5,7 +5,7 @@ require "text_parser"
 class TextParserTest < Test::Unit::TestCase
 
   def test_should_have_method_parse
-    assert "some text".methods.select{|a| a == "parse"}.count > 0
+    assert "some text".methods.select{|a| a.to_s == "parse"}.count > 0
   end
   
   def test_should_parse
@@ -14,11 +14,11 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "dolor",        :hits => 1}],
                   text.parse(:dictionary => ["dolor", "consectetur"])
   end
-  
+
   def test_should_parse_without_dictionary
     assert_equal [{:word => "test", :hits => 2}], "test test".parse
   end
-  
+
   def test_should_remove_some_characters
     text = "Test? Test. Yes, test!"
     assert_equal [{:word => "test", :hits => 3}, {:word => "yes", :hits => 1}], text.parse
@@ -66,7 +66,7 @@ class TextParserTest < Test::Unit::TestCase
   end
 
   def test_should_works_with_special_characters
-    assert_equal [], "'/[.](\")".parse
+    assert_equal [], "*&%?!$#%$@\\'///[.](\")".parse
   end
   
   def test_should_works_hifen
@@ -91,20 +91,18 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "espacos",:hits => 1},
                   {:word => "eu",     :hits => 1},
                   {:word => "se",     :hits => 1}], text.parse
-  end   
-  
+  end 
+
   def test_should_keep_some_special_character
     assert_equal [{:word => "espaço", :hits => 1},
                   {:word => "sideral",:hits => 1}], "Espaço sideral".parse
     assert_equal [{:word => "açúcar", :hits => 1},
-                  {:word => "bom",    :hits => 1},
-                  {:word => "de",     :hits => 1},
-                  {:word => "pão",    :hits => 1}], "Pão de açúcar é bom.".parse
+                  {:word => "pão",    :hits => 1}], "Pão açúcar".parse
+    assert_equal [{:word => "ãéç",    :hits => 1}], "ãéç".parse
   end
 end
 
-
-
+ 
 
 
 
