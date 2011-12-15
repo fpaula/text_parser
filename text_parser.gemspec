@@ -1,7 +1,4 @@
-require "version"
-
 Gem::Specification.new do |s|
-  puts TextParser::Version.const_get("STRING")
   s.name        = "text_parser"
   s.version     = "0.1.6"
   s.author      = "Frederico de Paula"
