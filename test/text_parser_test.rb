@@ -100,6 +100,18 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "pão",    :hits => 1}], "Pão açúcar".parse
     assert_equal [{:word => "ãéç",    :hits => 1}], "ãéç".parse
   end
+  
+  def test_minimum_length
+    text = "a ab   abc "
+    assert_equal [{:word => "a",    :hits => 1},
+                  {:word => "ab",   :hits => 1},
+                  {:word => "abc",  :hits => 1}], text.parse(:minimum_length => 1)
+    assert_equal [{:word => "ab",   :hits => 1},
+                  {:word => "abc",  :hits => 1}], text.parse(:minimum_length => 2)
+    assert_equal [{:word => "abc",  :hits => 1}], text.parse(:minimum_length => 3)
+    assert_equal [{:word => "abc",  :hits => 1}], text.parse(:minimum_length => 2, :negative_dictionary => ["ab"])
+    assert_equal [],                              text.parse(:minimum_length => 3, :dictionary => ["a"])
+  end
 end
 
  
