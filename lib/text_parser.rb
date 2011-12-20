@@ -17,7 +17,7 @@ module TextParser
     return [] if options[:dictionary].count < 1
     regex = Regexp.new(options[:dictionary].join('\\b|\\b'), Regexp::IGNORECASE)
     match_result = text.scan(regex).map{|i| i.downcase}  
-    match_result.select!{|i| i.size >= options[:minimum_length]} if options[:minimum_length]
+    match_result = match_result.select{|i| i.size >= options[:minimum_length]} if options[:minimum_length]
     match_result.each do |w|
       result << {:hits => match_result.count(w), :word => w} unless result.select{|r| r[:word] == w}.shift || options[:negative_dictionary].map{|i| i.downcase}.include?(w)
     end 
