@@ -1,3 +1,7 @@
+=Build status
+{<img src="https://secure.travis-ci.org/fpaula/text_parser.png" />}[https://secure.travis-ci.org/fpaula/text_parser.png]
+
+
 =Arguments (Hash)
   +---------------------------------+--------+---------------+
   | Key                             | Type   | Default value |
@@ -6,6 +10,7 @@
   | :order (:word | :hits)          | Symbol | :word         |
   | :order_direction (:asc | :desc) | Symbol | :asc          |
   | :negative_dictionary            | Array  | nil           |
+  | :minimum_length                 | Array  | nil           |
   +---------------------------------+--------+---------------+
 
 
@@ -29,5 +34,10 @@
 
   "Lorem ipsum dolor sit amet".parse(:negative_dictionary => ["ipsum", "dolor", "sit"])
   # => [{:word => "loren", :hits => 1}, {:word => "amet", :hits => 1}]
+
+------------------------------------------------------------------------------------------------------------
+
+  "My test!".parse(:minimum_length => 3)
+  # => [{:word => "test", :hits => 1}]
   
   
