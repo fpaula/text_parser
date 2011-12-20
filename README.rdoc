@@ -1,5 +1,5 @@
 =Build status
-{<img src="http://travis-ci.org/fpaula/text_parser.png" />}[http://travis-ci.org/fpaula/text_parser]
+{<img src="https://secure.travis-ci.org/fpaula/text_parser.png" />}[https://secure.travis-ci.org/fpaula/text_parser.png]
 
 
 =Arguments (Hash)
