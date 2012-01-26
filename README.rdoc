@@ -16,6 +16,10 @@
 
 =Usage
 
+  Site example: http://textparser.heroku.com
+
+------------------------------------------------------------------------------------------------------------
+
   "Simple, simple test".parse 
   # => [{:word => "simple", :hits => 2}, {:word => "test", :hits => 1}]
 
