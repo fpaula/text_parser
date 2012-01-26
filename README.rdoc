@@ -16,7 +16,7 @@
 
 =Usage
 
-Site example: [url]http://textparser.heroku.com
+Site example: http://textparser.heroku.com
 
 ------------------------------------------------------------------------------------------------------------
 
