@@ -10,7 +10,7 @@
   | :order (:word | :hits)          | Symbol | :word         |
   | :order_direction (:asc | :desc) | Symbol | :asc          |
   | :negative_dictionary            | Array  | nil           |
-  | :minimum_length                 | Array  | nil           |
+  | :minimum_length                 | int    | nil           |
   +---------------------------------+--------+---------------+
 
 
