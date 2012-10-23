@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require "text_parser/version"
+
 module TextParser
   # Returns a parsed text with the words and its occurrences.
   # @param [Hash] [args]
