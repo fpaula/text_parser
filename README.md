@@ -51,8 +51,8 @@ Or install it yourself as:
 | Key                             | Type   | Default value |
 | ------------------------------- | ------ | ------------- |
 | :dictionary                     | Array  | nil           |
-| :order (:word | :hits)          | Symbol | :word         |
-| :order_direction (:asc | :desc) | Symbol | :asc          |
+| :order (:word, :hits)           | Symbol | :word         |
+| :order_direction (:asc, :desc)  | Symbol | :asc          |
 | :negative_dictionary            | Array  | nil           |
 | :minimum_length                 | int    | nil           |
 
