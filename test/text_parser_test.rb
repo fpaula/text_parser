@@ -7,7 +7,7 @@ class TextParserTest < Test::Unit::TestCase
   def test_should_have_method_parse
     assert "some text".methods.select{|a| a.to_s == "parse"}.count > 0
   end
-  
+
   def test_should_parse
     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
     assert_equal [{:word => "consectetur",  :hits => 2},
@@ -23,14 +23,14 @@ class TextParserTest < Test::Unit::TestCase
     text = "Test? Test. Yes, test!"
     assert_equal [{:word => "test", :hits => 3}, {:word => "yes", :hits => 1}], text.parse
   end
-  
+
   def test_should_return_an_empty_array
     assert_equal "test".parse(:dictionary => ['abc']), []
   end
 
   def test_should_order_by_word_asc
     text = " beta omega gamma alpha gamma"
-    result = [{:word => "alpha",  :hits => 1}, 
+    result = [{:word => "alpha",  :hits => 1},
               {:word => "beta",   :hits => 1},
               {:word => "gamma",  :hits => 2},
               {:word => "omega",  :hits => 1}]
@@ -38,12 +38,12 @@ class TextParserTest < Test::Unit::TestCase
     assert_equal result, text.parse(:order => :word)
     assert_equal result, text.parse(:order => :word, :order_direction => :asc)
   end
-  
+
   def test_should_order_by_word_desc
     assert_equal [{:word => "zzz",  :hits => 1},
                   {:word => "aaa",  :hits => 1}], "aaa zzz".parse(:order => :word, :order_direction => :desc)
   end
- 
+
   def test_should_order_by_hits_asc
     text = "gamma alpha gamma beta alpha gamma"
     result = [{:word => "beta",  :hits => 1},
@@ -52,7 +52,7 @@ class TextParserTest < Test::Unit::TestCase
     assert_equal result, text.parse(:order => :hits)
     assert_equal result, text.parse(:order => :hits, :order_direction => :asc)
   end
-  
+
   def test_should_order_by_hits_desc
     text = "gamma alpha gamma beta alpha gamma"
     assert_equal [{:word => "gamma",  :hits => 3},
@@ -60,7 +60,7 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "beta",   :hits => 1}],
                   text.parse(:order => :hits, :order_direction => :desc)
   end
-  
+
   def test_should_ignore_negative_dictionary
     assert_equal [{:word => "good",  :hits => 1}], "This is good".parse(:negative_dictionary => ["is", "this"])
   end
@@ -68,11 +68,11 @@ class TextParserTest < Test::Unit::TestCase
   def test_should_works_with_special_characters
     assert_equal [], "*&%?!$#%$@\\'///[.](\")".parse
   end
-  
+
   def test_should_works_hifen
     assert_equal [{:word => "self-service", :hits => 1}], "self-service".parse
   end
-  
+
   def test_should_return_double_words
     assert_equal [{:word => "forrest gump", :hits => 1}],
                  "I like the movie Forrest Gump.".parse(:dictionary => ["Forrest Gump"])
@@ -91,7 +91,7 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "espacos",:hits => 1},
                   {:word => "eu",     :hits => 1},
                   {:word => "se",     :hits => 1}], text.parse
-  end 
+  end
 
   def test_should_keep_some_special_character
     assert_equal [{:word => "espaço", :hits => 1},
@@ -100,7 +100,7 @@ class TextParserTest < Test::Unit::TestCase
                   {:word => "pão",    :hits => 1}], "Pão açúcar".parse
     assert_equal [{:word => "ãéç",    :hits => 1}], "ãéç".parse
   end
-  
+
   def test_minimum_length
     text = "a ab   abc "
     assert_equal [{:word => "a",    :hits => 1},
@@ -113,17 +113,3 @@ class TextParserTest < Test::Unit::TestCase
     assert_equal [],                              text.parse(:minimum_length => 3, :dictionary => ["a"])
   end
 end
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
