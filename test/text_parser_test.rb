@@ -5,7 +5,7 @@ require "text_parser"
 class TextParserTest < Test::Unit::TestCase
 
   def test_should_have_method_parse
-    assert "some text".methods.select{|a| a.to_s == "parse"}.count > 0
+    assert "string".respond_to?(:parse)
   end
 
   def test_should_parse
