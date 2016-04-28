@@ -10,44 +10,38 @@ Add this line to your application's Gemfile:
 
     gem 'text_parser'
 
-And then execute:
+And then run:
 
-    $ bundle
+    `bundle install`
 
 Or install it yourself as:
 
-    $ gem install text_parser
+    `gem install text_parser`
 
 ## Usage
-
-    "Simple, simple test".parse 
+```ruby
+    "Simple, simple test".parse
     # => [{:word => "simple", :hits => 2}, {:word => "test", :hits => 1}]
-
----
-
+```
+```ruby
     my_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
     my_text.parse(:dictionary => ["dolor", "consectetur"])
     # => [{:word => "consectetur", :hits => 2}, {:word => "dolor", :hits => 1}]
-
----
-
+```
+```ruby
     my_text.parse(:dictionary => ["dolor", "consectetur"], :order => :word, :order_direction => :desc)
     # => [{:word => "dolor", :hits => 1}, {:word => "consectetur", :hits => 2}]
-
----
-
+```
+```ruby
     "Lorem ipsum dolor sit amet".parse(:negative_dictionary => ["ipsum", "dolor", "sit"])
     # => [{:word => "loren", :hits => 1}, {:word => "amet", :hits => 1}]
-
----
-
+```
+```ruby
     "My test!".parse(:minimum_length => 3)
     # => [{:word => "test", :hits => 1}]
+```
 
----
-
-### Arguments (Hash)
-
+### Arguments (hash)
 | Key                             | Type   | Default value |
 | ------------------------------- | ------ | ------------- |
 | :dictionary                     | Array  | nil           |
@@ -56,7 +50,6 @@ Or install it yourself as:
 | :negative_dictionary            | Array  | nil           |
 | :minimum_length                 | int    | nil           |
 
-Try it online at the [site example](http://textparser.heroku.com "Title").
 
 ## Contributing
 

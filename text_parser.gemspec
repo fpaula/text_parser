@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["fpaula@gmail.com"]
   gem.description   = %q{Includes a parse method on String object}
   gem.summary       = %q{Using method parse in the String object you can parse any text.}
-  gem.homepage      = "http://textparser.heroku.com"
+  gem.homepage      = "https://github.com/fpaula/text_parser"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
