@@ -2,9 +2,10 @@
 
 Using method parse in the String object you can parse any text.
 
-<!-- ![Text Parser Build status](https://secure.travis-ci.org/fpaula/text_parser.png) -->
+![Text Parser Build status](https://secure.travis-ci.org/fpaula/text_parser.png)
 
 ## Installation
+
 
 Add this line to your application's Gemfile:
 
