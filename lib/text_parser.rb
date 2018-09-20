@@ -1,11 +1,11 @@
 # -*- encoding : utf-8 -*-
-require "text_parser/version"
+require_relative "text_parser/version"
 
 module TextParser
   # Returns a parsed text with the words and its occurrences.
   # @param [Hash] [args]
   # [args] [Symbol] :dictionary, :order, :order_direction, :negative_dictionary
-  # @return [Array of Hash]  
+  # @return [Array of Hash]
   def parse(args = {})
     args.delete_if {|key, value| value.nil? }
     options = {
@@ -18,11 +18,11 @@ module TextParser
     options[:dictionary] = text.split(" ") unless options[:dictionary]
     return [] if options[:dictionary].count < 1
     regex = Regexp.new(options[:dictionary].join('\\b|\\b'), Regexp::IGNORECASE)
-    match_result = text.scan(regex).map{|i| i.downcase}  
+    match_result = text.scan(regex).map{|i| i.downcase}
     match_result = match_result.select{|i| i.size >= options[:minimum_length]} if options[:minimum_length]
     match_result.each do |w|
       result << {:hits => match_result.count(w), :word => w} unless result.select{|r| r[:word] == w}.shift || options[:negative_dictionary].map{|i| i.downcase}.include?(w)
-    end 
+    end
     result = result.sort_by{|i| i[options[:order]]}
     result.reverse! if options[:order_direction] == :desc
     result
