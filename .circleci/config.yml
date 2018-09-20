@@ -1,8 +1,24 @@
 version: 2
 jobs:
   build:
+    parallelism: 3
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/ruby:2.4.2-jessie-node
+        environment:
+          RACK_ENV: test
     steps:
       - checkout
-      - run: rake test
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Run rspec in parallel
+          command: |
+            bundle exec rake test --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: test_results
+      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
