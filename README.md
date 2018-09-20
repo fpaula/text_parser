@@ -3,6 +3,7 @@
 Using method parse in the String object you can parse any text.
 
 [![CircleCI](https://circleci.com/gh/fpaula/text_parser/tree/master.svg?style=svg)](https://circleci.com/gh/fpaula/text_parser/tree/master)
+[![Gem Version](https://badge.fury.io/rb/text_parser.svg)](https://badge.fury.io/rb/text_parser)
 
 ## Installation
 
