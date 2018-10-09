@@ -44,20 +44,21 @@ Or install it yourself as:
 ```
 
 ### Arguments (hash)
-| Key                             | Type   | Default value |
-| ------------------------------- | ------ | ------------- |
-| :dictionary                     | Array  | nil           |
-| :order (:word, :hits)           | Symbol | :word         |
-| :order_direction (:asc, :desc)  | Symbol | :asc          |
-| :negative_dictionary            | Array  | nil           |
-| :minimum_length                 | int    | nil           |
+| Key                                     | Type   | Default value   |
+| --------------------------------------- | ------ | --------------- |
+| :dictionary                             | Array  | nil             |
+| :order (:word, :hits)                   | Symbol | :word           |
+| :order_direction (:asc, :desc)          | Symbol | :asc            |
+| :order_style (:ignore_accents, :ascii ) | Symbol | :ignore_accents |
+| :negative_dictionary                    | Array  | nil             |
+| :minimum_length                         | int    | nil             |
 
 
 ## Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Run the tests
+3. Run the tests (`rake test`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request

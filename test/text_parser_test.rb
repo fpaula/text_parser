@@ -1,9 +1,8 @@
 # -*- encoding : utf-8 -*-
-require "test/unit"
-require "text_parser"
+require 'test/unit'
+require 'text_parser'
 
 class TextParserTest < Test::Unit::TestCase
-
   def test_should_have_method_parse
     assert "string".respond_to?(:parse)
   end
@@ -29,7 +28,7 @@ class TextParserTest < Test::Unit::TestCase
   end
 
   def test_should_order_by_word_asc
-    text = " beta omega gamma alpha gamma"
+    text = ' beta omega gamma alpha gamma'
     result = [{:word => "alpha",  :hits => 1},
               {:word => "beta",   :hits => 1},
               {:word => "gamma",  :hits => 2},
@@ -41,7 +40,48 @@ class TextParserTest < Test::Unit::TestCase
 
   def test_should_order_by_word_desc
     assert_equal [{:word => "zzz",  :hits => 1},
-                  {:word => "aaa",  :hits => 1}], "aaa zzz".parse(:order => :word, :order_direction => :desc)
+                  {:word => "aaa",  :hits => 1}], 'aaa zzz'.parse(:order => :word, :order_direction => :desc)
+  end
+
+  def test_should_order_ignoring_accents
+    text = 'bílis ômega gato astuto árvore amora gato'
+    result = [
+      { :word => 'amora', :hits => 1 },
+      { :word => 'árvore', :hits => 1 },
+      { :word => 'astuto', :hits => 1 },
+      { :word => 'bílis', :hits => 1 },
+      { :word => 'gato', :hits => 2 },
+      { :word => 'ômega', :hits => 1 }
+    ]
+
+    assert_equal result, text.parse(:order => :word, :order_style => :ignore_accents)
+  end
+
+  def test_should_order_ignoring_accents_desc
+    text = 'bílis ômega gato árvore amora gato'
+    result = [
+      { :word => 'ômega', :hits => 1 },
+      { :word => 'gato', :hits => 2 },
+      { :word => 'bílis', :hits => 1 },
+      { :word => 'árvore', :hits => 1 },
+      { :word => 'amora', :hits => 1 }
+    ]
+
+    assert_equal result, text.parse(:order => :word, :order_style => :ignore_accents, :order_direction => :desc)
+  end
+
+  def test_should_not_ignore_accents_if_ordered_field_is_not_string
+    text = 'bílis ômega gato astuto árvore amora gato'
+    result = [
+      { :word => 'gato', :hits => 2 },
+      { :word => 'amora', :hits => 1 },
+      { :word => 'árvore', :hits => 1 },
+      { :word => 'astuto', :hits => 1 },
+      { :word => 'bílis', :hits => 1 },
+      { :word => 'ômega', :hits => 1 }
+    ]
+    parsed_text = text.parse(:order => :hits, :order_style => :ignore_accents, :order_direction => :desc)
+    assert_equal 'gato', parsed_text.first[:word]
   end
 
   def test_should_order_by_hits_asc
