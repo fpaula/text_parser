@@ -5,7 +5,7 @@ module TextParser
   TEXT_PARSER_OPTIONS = {
     :order => :word,
     :order_direction => :asc,
-    :order_style => :ascii,
+    :order_style => :ignore_accents,
     :negative_dictionary => []
   }.freeze
 
@@ -16,7 +16,7 @@ module TextParser
   def parse(args = {})
     args.delete_if { |key, value| value.nil? }
     options = TEXT_PARSER_OPTIONS.merge(args)
-    text = self.gsub(/[^A-Za-zÀ-ú0-9\-]/u,' ').strip
+    text = self.gsub(/[^A-Za-zÀ-ú0-9\-]/u, ' ').strip
     options[:dictionary] = text.split(' ') unless options[:dictionary]
     return [] if options[:dictionary].count < 1
     regex = Regexp.new(options[:dictionary].join('\\b|\\b'), Regexp::IGNORECASE)

@@ -44,14 +44,14 @@ Or install it yourself as:
 ```
 
 ### Arguments (hash)
-| Key                                     | Type   | Default value |
-| --------------------------------------- | ------ | ------------- |
-| :dictionary                             | Array  | nil           |
-| :order (:word, :hits)                   | Symbol | :word         |
-| :order_direction (:asc, :desc)          | Symbol | :asc          |
-| :order_style (:ignore_accents, :ascii ) | Symbol | :ascii        |
-| :negative_dictionary                    | Array  | nil           |
-| :minimum_length                         | int    | nil           |
+| Key                                     | Type   | Default value   |
+| --------------------------------------- | ------ | --------------- |
+| :dictionary                             | Array  | nil             |
+| :order (:word, :hits)                   | Symbol | :word           |
+| :order_direction (:asc, :desc)          | Symbol | :asc            |
+| :order_style (:ignore_accents, :ascii ) | Symbol | :ignore_accents |
+| :negative_dictionary                    | Array  | nil             |
+| :minimum_length                         | int    | nil             |
 
 
 ## Contributing
