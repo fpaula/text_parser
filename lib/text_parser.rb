@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 require_relative 'text_parser/version'
 
 module TextParser
   TEXT_PARSER_OPTIONS = {
-    :order => :word,
-    :order_direction => :asc,
-    :order_style => :ignore_accents,
-    :negative_dictionary => []
+    order: :word,
+    order_direction: :asc,
+    order_style: :ignore_accents,
+    negative_dictionary: []
   }.freeze
 
   # Returns a parsed text with the words and its occurrences.
@@ -20,11 +22,11 @@ module TextParser
     options[:dictionary] = text.split(' ') unless options[:dictionary]
     return [] if options[:dictionary].count < 1
     regex = Regexp.new(options[:dictionary].join('\\b|\\b'), Regexp::IGNORECASE)
-    match_result = text.scan(regex).map{|i| i.downcase}
-    match_result = match_result.select{|i| i.size >= options[:minimum_length]} if options[:minimum_length]
+    match_result = text.scan(regex).map { |i| i.downcase }
+    match_result = match_result.select { |i| i.size >= options[:minimum_length] } if options[:minimum_length]
     result = []
     match_result.each do |w|
-      result << { :hits => match_result.count(w), :word => w } unless result.select { |r| r[:word] == w}.shift || options[:negative_dictionary].map{|i| i.downcase }.include?(w)
+      result << { hits: match_result.count(w), word: w } unless result.select { |r| r[:word] == w}.shift || options[:negative_dictionary].map { |i| i.downcase }.include?(w)
     end
 
     result.sort_by! do |i|

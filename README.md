@@ -5,8 +5,11 @@ Using method parse in the String object you can parse any text.
 [![CircleCI](https://circleci.com/gh/fpaula/text_parser/tree/master.svg?style=svg)](https://circleci.com/gh/fpaula/text_parser/tree/master)
 [![Gem Version](https://badge.fury.io/rb/text_parser.svg)](https://badge.fury.io/rb/text_parser)
 
-## Installation
+## Dependencies
 
+This gem requires ruby `1.9.2` or above.
+
+## Installation
 
 Add this line to your application's Gemfile:
 
@@ -22,25 +25,25 @@ Or install it yourself as:
 
 ## Usage
 ```ruby
-    "Simple, simple test".parse
-    # => [{:word => "simple", :hits => 2}, {:word => "test", :hits => 1}]
+    'Simple, simple test'.parse
+    # => [{ word: 'simple', hits: 2 }, { word: 'test', hits: 1 }]
 ```
 ```ruby
-    my_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur."
-    my_text.parse(:dictionary => ["dolor", "consectetur"])
-    # => [{:word => "consectetur", :hits => 2}, {:word => "dolor", :hits => 1}]
+    my_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium consectetur.'
+    my_text.parse(dictionary: ['dolor', 'consectetur'])
+    # => [{ word: 'consectetur', hits: 2 }, { word: 'dolor', hits: 1 }]
 ```
 ```ruby
-    my_text.parse(:dictionary => ["dolor", "consectetur"], :order => :word, :order_direction => :desc)
-    # => [{:word => "dolor", :hits => 1}, {:word => "consectetur", :hits => 2}]
+    my_text.parse(dictionary: ['dolor', 'consectetur'], order: :word, order_direction: :desc)
+    # => [{ word: 'dolor', hits: 1 }, { word: 'consectetur', hits: 2 }]
 ```
 ```ruby
-    "Lorem ipsum dolor sit amet".parse(:negative_dictionary => ["ipsum", "dolor", "sit"])
-    # => [{:word => "loren", :hits => 1}, {:word => "amet", :hits => 1}]
+    'Lorem ipsum dolor sit amet'.parse(negative_dictionary: ['ipsum', 'dolor', 'sit'])
+    # => [{ word: 'loren', hits: 1 }, { word: 'amet', hits: 1 }]
 ```
 ```ruby
-    "My test!".parse(:minimum_length => 3)
-    # => [{:word => "test", :hits => 1}]
+    'My test!'.parse(minimum_length: 3)
+    # => [{ word: 'test', hits: 1 }]
 ```
 
 ### Arguments (hash)
