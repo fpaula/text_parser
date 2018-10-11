@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:1.9.2
        - image: circleci/ruby:2.4.1
 
     working_directory: ~/repo
